@@ -1,0 +1,11 @@
+export class {{classname}}{{#if allParents}}{{#each allParents}}{{#if @first}} extends {{/if}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}{{/if}} { {{> modelGenericAdditionalProperties}}
+{{#each vars}}
+    {{#if description}}
+    /**
+     * {{{description}}}
+     */
+    {{/if}}
+    {{#if pattern}}@Matches({{{pattern}}}){{/if}}
+    {{#if isReadOnly}}readonly {{/if}}{{{name}}}{{#unless required}}?{{/unless}}: {{#if isEnum}}{{{datatypeWithEnum}}}{{/if}}{{#unless isEnum}}{{{dataType}}}{{/unless}}{{#if isNullable}} | null{{/if}};
+{{/each}}
+}{{> modelGenericEnums}}

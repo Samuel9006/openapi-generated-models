@@ -1,0 +1,10 @@
+{
+    "generatorName": "typescript-nestjs",
+    "inputSpec": "./src/api/api.yml",
+    "output": "./generado",
+    "templateDir": "./handlebars-templates",
+    "globalProperties": {
+      "models": true
+    }
+  }
+  

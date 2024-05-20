@@ -1,0 +1,15 @@
+{{>licenseInfo}}
+{{#each models}}
+{{#with model}}
+{{#each tsImports}}
+import { {{classname}} } from './{{filename}}';
+{{/each}}
+
+{{#if description}}
+/**
+ * {{{description}}}
+ */
+{{/if}}
+{{#if isEnum}}{{> modelEnum}}{{/if}}{{#unless isEnum}}{{#if isAlias}}{{> modelAlias}}{{/if}}{{#unless isAlias}}{{#if taggedUnions}}{{> modelTaggedUnion}}{{/if}}{{#unless taggedUnions}}{{#if oneOf}}{{#if @first}}{{> modelOneOf}}{{/if}}{{/if}}{{#unless oneOf}}{{> modelGeneric}}{{/unless}}{{/unless}}{{/unless}}{{/unless}}
+{{/with}}
+{{/each}}

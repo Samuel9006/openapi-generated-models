@@ -1,0 +1,27 @@
+{{#hasImports}}
+import {
+    {{#imports}}
+    {{{.}}},
+    {{/imports}}
+} from './';
+
+{{/hasImports}}
+import { IsOptional, Validate, ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsOnlyOnePropertyPresent } from './IsOnlyOnePropertyPresent';          
+
+/**
+ * @class {{classname}}{{#description}}
+ * {{{.}}}{{/description}}
+ * @export
+ */
+export class {{classname}} {
+    {{#oneOf}}
+        @IsOptional()
+        @ValidateNested()
+        @Type(() => {{{.}}})
+        @IsOnlyOnePropertyPresent(['createAdminDto', 'createUserDto'])
+        {{{.}}}: {{{.}}};
+    {{/oneOf}}
+}
+
